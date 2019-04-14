@@ -7,15 +7,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * @author ChenShuHui
- * @className OnClick
- * @email chenshuhui@corp.netease.com
- * @create_date 2019/4/11
- */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@EventBase(listenerSetter = "setOnClickListener", listenerType = View.OnClickListener.class, callBaseListener = "onClick")
-public @interface OnClick {
+@EventBase(listenerSetter = "setOnLongClickListener", listenerType = View.OnLongClickListener.class, callBaseListener = "onLongClick")
+public @interface onLongClick {
     int[] value();
 }

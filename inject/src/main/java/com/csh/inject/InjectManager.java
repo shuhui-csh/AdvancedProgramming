@@ -40,13 +40,14 @@ public class InjectManager {
             Annotation[] annotations = method.getAnnotations();
             //遍历每个方法的注解
             for (Annotation annotation : annotations) {
+                //获取这个注解上的注解类型（其实还是一个注解）
                 Class<? extends Annotation> annotationType = annotation.annotationType();
                 if (annotationType != null) {
                     EventBase eventBase = annotationType.getAnnotation(EventBase.class);
                     //事件的3个规律
                     String listenerSetter = eventBase.listenerSetter();
-                    Class<?> listenerType = eventBase.listenrType();
-                    String callBaseListener = eventBase.callBaceListener();
+                    Class<?> listenerType = eventBase.listenerType();
+                    String callBaseListener = eventBase.callBaseListener();
 
                     //注解的值
                     try {
@@ -57,6 +58,7 @@ public class InjectManager {
 
                         ListenerInvocationHandler handler = new ListenerInvocationHandler(activity);
                         handler.addMethod(callBaseListener, method);
+                        //通过代理，换掉本来要执行的callBaseListener（比如onClick）,执行我自定义method(比如show)
                         Object listener = Proxy.newProxyInstance(listenerType.getClassLoader(), new Class[]{listenerType}, handler);
 
                         for (int viewId : viewIds) {

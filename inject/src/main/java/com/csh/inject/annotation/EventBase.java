@@ -18,8 +18,8 @@ public @interface EventBase {
     String listenerSetter();
 
     //new View.OnXxListener
-    Class<?> listenrType();
+    Class<?> listenerType();
 
     //回调执行方法：onXx()
-    String callBaceListener();
+    String callBaseListener();
 }
