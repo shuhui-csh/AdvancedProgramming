@@ -7,5 +7,5 @@ public class NDKTest {
         System.loadLibrary("JNITest");
     }
 
-    public native String getStringFromC();
+    public native static String getStringFromC();
 }

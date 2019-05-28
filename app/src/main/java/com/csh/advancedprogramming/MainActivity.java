@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         InjectManager.inject(this);
+        mTextView.setText(NDKTest.getStringFromC());
     }
 
     @OnClick({R.id.button, R.id.tv})
