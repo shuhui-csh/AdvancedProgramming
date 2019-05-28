@@ -7,8 +7,8 @@
 #include "com_csh_advancedprogramming_NDKTest.h"
 
 JNIEXPORT jstring JNICALL Java_com_csh_advancedprogramming_NDKTest_getStringFromC
-  (JNIEnv *env,  jclass jclass) {
+  (JNIEnv *env,  jobject jobject) {
 
    //返回一个字符串
-        return (*env)->NewStringUTF(env,"这个是从 c获取而来的文件");
+        return (*env)->NewStringUTF(env,"This is my first NDK Application");
   }
